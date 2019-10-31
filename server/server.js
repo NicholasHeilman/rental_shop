@@ -1,7 +1,9 @@
 const express = require('express');
-require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const pg = require('pg');
+require('dotenv').config();
 
 
 // Route includes
@@ -11,6 +13,7 @@ const toolRouter = require('./routes/tool.router')
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 // Passport Session Configuration //
 // app.use(sessionMiddleware);
